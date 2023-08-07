@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "191439383511",
+    "project_id": "amc-online",
+    "storage_bucket": "amc-online.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:191439383511:android:ad9c4ab1b7363f74443992",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "191439383511-9jv6b6ek45lrm70m348eu6p1j6q14e5e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCme6XGeIku1AOwYx1elzSEn2m6TjewZ1A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "191439383511-9jv6b6ek45lrm70m348eu6p1j6q14e5e.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "191439383511-4n3fipmn5m54dq4silmmlib18ur332t4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterApplication1"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
