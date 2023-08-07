@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class AccountsPage extends StatefulWidget {
   const AccountsPage({super.key});
@@ -9,21 +10,38 @@ class AccountsPage extends StatefulWidget {
 }
 
 class _AccountsPageState extends State<AccountsPage> {
-  String fullName = '';
-  String email = '';
-  String password = '';
-  String phoneNumber = '';
-  String raceNumber = '';
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  User? user;
+  String password = ''; 
+  
   bool isUpdatingUser = false;
   String updatedEmail = '';
   String updatedPassword = '';
+
+  @override
+  void initState() {
+    super.initState();
+    user = _auth.currentUser;
+  }
+
+  Future<void> _logout() async {
+    await _auth.signOut();
+    // ignore: use_build_context_synchronously
+    Navigator.of(context).pop(); // This will close the current screen. Depending on your app's structure, you might want to navigate to a different screen instead.
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Accounts Page'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: _logout,
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -40,8 +58,7 @@ class _AccountsPageState extends State<AccountsPage> {
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
-            Text('Email: $email'),
-            Text('Password: $password'),
+            Text('Email: ${user?.email ?? "N/A"}'),
             const SizedBox(height: 16),
             const Text(
               'Update User',
@@ -61,10 +78,6 @@ class _AccountsPageState extends State<AccountsPage> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Update Email & Password',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
                   const SizedBox(height: 8),
                   TextFormField(
                     decoration: const InputDecoration(labelText: 'Updated Email'),
@@ -85,12 +98,18 @@ class _AccountsPageState extends State<AccountsPage> {
                   const SizedBox(height: 16),
                   TextButton(
                     child: const Text('Save Changes'),
-                    onPressed: () {
-                      setState(() {
-                        email = updatedEmail;
-                        password = updatedPassword;
-                        isUpdatingUser = false;
-                      });
+                    onPressed: () async {
+                      if (user != null) {
+                        if (updatedEmail.isNotEmpty) {
+                          await user!.updateEmail(updatedEmail);
+                        }
+                        if (updatedPassword.isNotEmpty) {
+                          await user!.updatePassword(updatedPassword);
+                        }
+                        setState(() {
+                          isUpdatingUser = false;
+                        });
+                      }
                     },
                   ),
                 ],

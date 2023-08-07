@@ -85,9 +85,40 @@ List<Map<String, dynamic>> products1 = [];
       ),
     );
   }
+void _promptLogin() {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('Login Required'),
+        content: const Text('Please log in to access your cart.'),
+        actions: [
+          TextButton(
+            child: const Text('Cancel'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+          TextButton(
+            child: const Text('Login'),
+            onPressed: () {
+              // Navigate to your login page or perform login logic
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
+}
 
   
 void _goToCart() async {
+  if (currentUser == null) {
+    _promptLogin();
+    return;
+  }
+
   // Load the cart from Firestore
   List<Map<String, dynamic>> firestoreCartItems = await _loadCart();
 
@@ -184,22 +215,30 @@ void _removeFromCart(int index) async {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Shop'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.shopping_cart),
-            onPressed: _goToCart,
-          ),
-        ],
-      ),
+  title: const Text('Shop'),
+  actions: [
+    IconButton(
+      icon: const Icon(Icons.shopping_cart),
+      onPressed: _goToCart,
+    ),
+  ],
+),
+
       body: GridView.builder(
         padding: const EdgeInsets.all(10),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-          childAspectRatio: 4 / 3,
-        ),
+       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+  crossAxisCount: MediaQuery.of(context).size.width > 1200
+      ? 4
+      : MediaQuery.of(context).size.width > 800
+          ? 3
+          : MediaQuery.of(context).size.width > 600
+              ? 2
+              : 1,
+  crossAxisSpacing: 10,
+  mainAxisSpacing: 10,
+  childAspectRatio: 4 / 3,
+),
+
         itemCount: products.length,
         itemBuilder: (context, index) {
           final product = products[index];
@@ -294,7 +333,7 @@ class _HoverCardState extends State<HoverCard> with SingleTickerProviderStateMix
                         TextFormField(
                           onChanged: widget.onColorChanged,
                           decoration: const InputDecoration(
-                            hintText: 'Enter mini if you would like this for the Mini Motard',
+                            hintText: 'Enter mini if its for the Mini Motard',
                             border: OutlineInputBorder(),
                           ),
                         ),
