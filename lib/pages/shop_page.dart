@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_application_1/pages/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -51,40 +52,46 @@ List<Map<String, dynamic>> products1 = [];
     super.initState();
 
     products = [
-      {'name': 'Motard Front Axle sliders', 'price': 'R400', 'image': Image.asset('images/Front Bobbin AMC.jpeg'), 'color': '', 'isSelected': false,},
+      {'name': 'Motard Front Axle sliders', 'price': 'R400', 'image': Image.asset('images/AMC FRONT axle sliders.png'), 'color': '', 'isSelected': false,},
+      {'name': 'Motard Front Axle sliders bobbin replacement', 'price': 'R250', 'image': Image.asset('images/Front Bobbin Replacement.png'), 'color': '', 'isSelected': false,},
+      {'name': 'Motard Rear Axle sliders', 'price': 'R450', 'image': Image.asset('images/AMC rear axle sliders.png'), 'color': '', 'isSelected': false,},
+      {'name': 'Motard Rear Axle sliders bobbin replacement', 'price': 'R300', 'image': Image.asset('images/AMC rear bobbin axle sliders.png'), 'color': '', 'isSelected': false,},
       {'name': 'Motard Footpeg sliders', 'price': 'R400', 'image': Image.asset('images/Footpeg Sliders Final.png'), 'color': '', 'isSelected': false,},
-      {'name': 'Overflow bottle (vented or unvented)', 'price': 'R250', 'image': Image.asset('images/Overflow Bottle Final.png'), 'color': '', 'isSelected': false,},
+      {'name': 'Motard Footpeg sliders puk replacement', 'price': 'R200', 'image': Image.asset('images/Footpeg puks.png'), 'color': '', 'isSelected': false,},
+      {'name': 'Overflow bottle ', 'price': 'R250', 'image': Image.asset('images/Overflow Bottle Final.png'), 'color': '', 'isSelected': false,},
       {'name': 'Laptimer bracket', 'price': 'R250', 'image': Image.asset('images/Laptimer Bracket Final.png'), 'color': '', 'isSelected': false,},
       {'name': 'Velocity Gear Rack', 'price': 'R700', 'image': Image.asset('images/Gear Rack AMC (2).jpeg'), 'color': '', 'isSelected': false,},
-      {'name': 'Apex Axle sliders', 'price': 'R950', 'image': Image.asset('images/Apex Axle Sliders Final.png'), 'color': '', 'isSelected': false,},
-      {'name': 'Motard Front Axle sliders PUKS ONLY', 'price': 'R250', 'image': Image.asset('images/Front Bobbin AMC.jpeg'), 'color': '', 'isSelected': false,},
-      {'name': 'Motard Footpeg sliders PUKS ONLY', 'price': 'R200', 'image': Image.asset('images/Footpeg Sliders Final.png'), 'color': '', 'isSelected': false,},
-      {'name': 'Motard Rear Axle sliders', 'price': 'R450', 'image': Image.asset('images/Front Bobbin AMC.jpeg'), 'color': '', 'isSelected': false,},
-      {'name': 'Motard Rear Axle sliders PUKS ONLY', 'price': 'R300', 'image': Image.asset('images/Front Bobbin AMC.jpeg'), 'color': '', 'isSelected': false,}
+      {'name': 'Apex Axle sliders', 'price': 'R950', 'image': Image.asset('images/Apex Axle Sliders Final.png'), 'color': '', 'isSelected': false,}
     ];
 
       products1 = [
-      {'name': 'Motard Front Axle sliders', 'price': 'R400 (R250 puks only)', 'image': Image.asset('images/Front Bobbin AMC.jpeg'), 'color': '', 'isSelected': false,},
-      {'name': 'Motard Footpeg sliders', 'price': 'R400 (R200 puks only)', 'image': Image.asset('images/Footpeg Sliders Final.png'), 'color': '', 'isSelected': false,},
-      {'name': 'Laptimer Bracket', 'price': 'R250', 'image': Image.asset('images/Overflow Bottle Final.png'), 'color': '', 'isSelected': false,},
-      {'name': 'Overflow bottle (vented or unvented)', 'price': 'R250', 'image': Image.asset('images/Laptimer Bracket Final.png'), 'color': '', 'isSelected': false,},
+      {'name': 'Motard Front Axle sliders', 'price': 'R400', 'image': Image.asset('images/AMC FRONT axle sliders.png'), 'color': '', 'isSelected': false,},
+      {'name': 'Motard Front Axle sliders bobbin replacement', 'price': 'R250', 'image': Image.asset('images/Front Bobbin Replacement.png'), 'color': '', 'isSelected': false,},
+      {'name': 'Motard Rear Axle sliders', 'price': 'R450', 'image': Image.asset('images/AMC rear axle sliders.png'), 'color': '', 'isSelected': false,},
+      {'name': 'Motard Rear Axle sliders bobbin replacement', 'price': 'R300', 'image': Image.asset('images/AMC rear bobbin axle sliders.png'), 'color': '', 'isSelected': false,},
+      {'name': 'Motard Footpeg sliders', 'price': 'R400', 'image': Image.asset('images/Footpeg Sliders Final.png'), 'color': '', 'isSelected': false,},
+      {'name': 'Motard Footpeg sliders puk replacement', 'price': 'R200', 'image': Image.asset('images/Footpeg puks.png'), 'color': '', 'isSelected': false,},
+      {'name': 'Overflow bottle ', 'price': 'R250', 'image': Image.asset('images/Overflow Bottle Final.png'), 'color': '', 'isSelected': false,},
+      {'name': 'Laptimer bracket', 'price': 'R250', 'image': Image.asset('images/Laptimer Bracket Final.png'), 'color': '', 'isSelected': false,},
       {'name': 'Velocity Gear Rack', 'price': 'R700', 'image': Image.asset('images/Gear Rack AMC (2).jpeg'), 'color': '', 'isSelected': false,},
-      {'name': 'Apex Axle sliders', 'price': 'R950', 'image': Image.asset('images/Apex Axle Sliders Final.png'), 'color': '', 'isSelected': false,},
-      {'name': 'Motard Front Axle sliders PUKS', 'price': 'R250', 'image': Image.asset('images/Front Bobbin AMC.jpeg'), 'color': '', 'isSelected': false,},
-      {'name': 'Motard Footpeg sliders PUKS ONLY', 'price': 'R200', 'image': Image.asset('images/Footpeg Sliders Final.png'), 'color': '', 'isSelected': false,},
-      {'name': 'Motard Rear Axle sliders', 'price': 'R450', 'image': Image.asset('images/Front Bobbin AMC.jpeg'), 'color': '', 'isSelected': false,},
-      {'name': 'Motard Rear Axle sliders PUKS ONLY', 'price': 'R300', 'image': Image.asset('images/Front Bobbin AMC.jpeg'), 'color': '', 'isSelected': false,}
+      {'name': 'Apex Axle sliders', 'price': 'R950', 'image': Image.asset('images/Apex Axle Sliders Final.png'), 'color': '', 'isSelected': false,}
     ];
   }
 
   Future<void> _toggleSelection(Map<String, dynamic> product) async {
-   await Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => ProductDetailScreen(product: product, addToCart: _addToCart,),
-      ),
-    );
+    if (currentUser == null) {
+    _promptLogin();
+    return;
   }
+  
+     await Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => ProductDetailScreen(product: product, addToCart: _addToCart,),
+    ),
+  );
+  
+}
 void _promptLogin() {
   showDialog(
     context: context,
@@ -103,7 +110,13 @@ void _promptLogin() {
             child: const Text('Login'),
             onPressed: () {
               // Navigate to your login page or perform login logic
-              Navigator.of(context).pop();
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LoginPage(),
+                  ),
+                );
+              
             },
           ),
         ],
@@ -122,25 +135,20 @@ void _goToCart() async {
   // Load the cart from Firestore
   List<Map<String, dynamic>> firestoreCartItems = await _loadCart();
 
-  // Update the state
-  setState(() {
-    cartItems = firestoreCartItems;
-  });
-
-  // Navigate to the CartPage
+  // Navigate to the CartPage with cart items and the removeFromCart function
   // ignore: use_build_context_synchronously
-await Navigator.of(context).push(
-  MaterialPageRoute(
-    builder: (BuildContext context) {
-      return CartPage(
-        cartItems: cartItems,
-        removeFromCart: _removeFromCart,  // Ensure this is correctly initialized
-      );
-    },
-  ),
-);
-
+  await Navigator.of(context).push(
+    MaterialPageRoute(
+      builder: (BuildContext context) {
+        return CartPage(
+          cartItems: firestoreCartItems,
+          removeFromCart: _removeFromCart,
+        );
+      },
+    ),
+  );
 }
+
 
  // ignore: unused_element
  void _checkoutCart() async {
@@ -172,6 +180,11 @@ for (var item in cartItems) {
 
 
 void _addToCart(Map<String, dynamic> product) async {
+   if (currentUser == null) {
+    _promptLogin();
+    return;
+  }
+
   product.removeWhere((key, value) => value is Image);
 
   DocumentReference ref = await _firestore.collection('users').doc(currentUser!.uid).collection('cart').add(product);
@@ -188,72 +201,114 @@ void _addToCart(Map<String, dynamic> product) async {
 
 
 void _removeFromCart(int index) async {
-  // Get the product from the cartItems list
-  Map<String, dynamic> product = cartItems[index];
   if (kDebugMode) {
-    print('Removing product with ID: ${product['id']}');
+    print('Index: $index, Cart items length: ${cartItems.length}');
+  }
+  if (kDebugMode) {
+    print('Start removing from cart');
+  }
+  
+  // Check if the index is within bounds
+  if (index < 0 || index >= cartItems.length) {
+    if (kDebugMode) {
+      print('Index out of bounds');
+    }
+    return;
   }
 
-  // Use the stored document ID to delete the document from Firestore
-  _firestore.collection('users').doc(currentUser!.uid).collection('cart').doc(product['id']).delete().then((value) {
+  // Print cart items for debugging
+  if (kDebugMode) {
+    print('Cart Items: $cartItems');
+  }
+
+  Map<String, dynamic> product = cartItems[index];
+  if (kDebugMode) {
+    print('Product to remove: ${product['id']}');
+  }
+
+  try {
     if (kDebugMode) {
-      print('Document successfully removed!');
+      print('Deleting from Firestore');
+    }
+    await _firestore
+        .collection('users')
+        .doc(currentUser!.uid)
+        .collection('cart')
+        .doc(product['id'])
+        .delete();
+
+    if (kDebugMode) {
+      print('Deleted from Firestore');
     }
 
-    // Update the state after successfully removing the document from Firestore
     setState(() {
       cartItems.removeAt(index);
     });
-  }).catchError((error) {
     if (kDebugMode) {
-      print('Failed to remove document: $error');
-    } 
-  });
+      print('Removed from local cart');
+    }
+
+    if (kDebugMode) {
+      print('Document successfully removed from cart!');
+    }
+  } catch (error) {
+    if (kDebugMode) {
+      print('Failed to remove document from cart: $error');
+    }
+  }
 }
 
-  @override
+
+   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-  title: const Text('Shop'),
-  actions: [
-    IconButton(
-      icon: const Icon(Icons.shopping_cart),
-      onPressed: _goToCart,
-    ),
-  ],
-),
-
-      body: GridView.builder(
-        padding: const EdgeInsets.all(10),
-       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-  crossAxisCount: MediaQuery.of(context).size.width > 1200
-      ? 4
-      : MediaQuery.of(context).size.width > 800
-          ? 3
-          : MediaQuery.of(context).size.width > 600
-              ? 2
-              : 1,
-  crossAxisSpacing: 10,
-  mainAxisSpacing: 10,
-  childAspectRatio: 4 / 3,
-),
-
-        itemCount: products.length,
-        itemBuilder: (context, index) {
-          final product = products[index];
-          return HoverCard(
-            product: product,
-            onTap: () => _toggleSelection(product),
-            onColorChanged: (String color) {
-              setState(() {
-                product['color'] = color;
-              });
-            },
-          );
-        },
+        title: const Text('Shop'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.shopping_cart),
+            onPressed: _goToCart,
+          ),
+        ],
       ),
+      body: Container(
+        // Set background image using BoxDecoration
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('images/BackgroundShop.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: GridView.builder(
+          padding: const EdgeInsets.all(10),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: MediaQuery.of(context).size.width > 1200
+                ? 4
+                : MediaQuery.of(context).size.width > 800
+                    ? 3 // Always show 3 items in a row for these widths
+                    : MediaQuery.of(context).size.width > 600
+                        ? 2
+                        : 1,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 20,
+            childAspectRatio: 3 / 2, // Adjust the ratio to make items smaller
+          ),
+          itemCount: products.length,
+          itemBuilder: (context, index) {
+            final product = products[index];
+            return HoverCard(
+              product: product,
+              onTap: () => _toggleSelection(product),
+              onColorChanged: (String color) {
+                setState(() {
+                  product['color'] = color;
+        });
+      },
     );
+  },
+),
+      )
+ );
   }
 }
 
@@ -316,38 +371,53 @@ class _HoverCardState extends State<HoverCard> with SingleTickerProviderStateMix
                   alignment: Alignment.center,
                   transform: Matrix4.identity()..rotateY(3.14),
                   child: Card(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(widget.product['name']),
-                        const SizedBox(height: 10),
-                        Text(widget.product['price']),
-                        const SizedBox(height: 10),
-                        TextFormField(
-                          onChanged: widget.onColorChanged,
-                          decoration: const InputDecoration(
-                            hintText: 'Enter colour',
-                            border: OutlineInputBorder(),
+                    elevation: 5,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(widget.product['name'], style: const TextStyle(fontWeight: FontWeight.bold)),
+                          const SizedBox(height: 10),
+                          Text(widget.product['price'], style: const TextStyle(color: Colors.orange)),
+                          const SizedBox(height: 10),
+                          TextFormField(
+                            onChanged: widget.onColorChanged,
+                            decoration: const InputDecoration(
+                              hintText: 'Enter colour',
+                              border: OutlineInputBorder(),
+                            ),
                           ),
-                        ),
-                        TextFormField(
-                          onChanged: widget.onColorChanged,
-                          decoration: const InputDecoration(
-                            hintText: 'Enter mini if its for the Mini Motard',
-                            border: OutlineInputBorder(),
+                          const SizedBox(height: 10),
+                          TextFormField(
+                            onChanged: widget.onColorChanged,
+                            decoration: const InputDecoration(
+                              hintText: 'Enter your bike year and model',
+                              border: OutlineInputBorder(),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 )
               : Card(
-                  child: widget.product['isSelected']
-                      ? Text(widget.product['name'])
-                      : AspectRatio(
-                          aspectRatio: 4 / 3, // You can adjust this value based on your preference.
-                          child: widget.product['image'],
-                        ),
+                  elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: widget.product['isSelected']
+                        ? Text(widget.product['name'])
+                        : AspectRatio(
+                            aspectRatio: 4 / 3,
+                            child: widget.product['image'],
+                          ),
+                  ),
                 ),
         ),
       ),
@@ -360,7 +430,6 @@ class _HoverCardState extends State<HoverCard> with SingleTickerProviderStateMix
     super.dispose();
   }
 }
-
 
 class ProductDetailScreen extends StatelessWidget {
   final Map<String, dynamic> product;
@@ -423,24 +492,44 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double totalPrice = cartItems.fold(0, (sum, item) => sum + double.parse(item['price'].substring(1)));
+   
     return Scaffold(
       appBar: AppBar(
         title: const Text('Cart'),
       ),
-      body: ListView.builder(
-        itemCount: cartItems.length,
-        itemBuilder: (context, index) {
-          final item = cartItems[index];
-          return ListTile(
-            title: Text(item['name']),
-            subtitle: Text('Color: ${item['color']}'),
-           trailing: IconButton(
-            icon: const Icon(Icons.remove_shopping_cart),
-            onPressed: () => removeFromCart(index),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: cartItems.length,
+              itemBuilder: (context, index) {
+                final item = cartItems[index];
+                return ListTile(
+                  title: Text(item['name']),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(item['price']),
+                      Text('Color: ${item['color']}'),
+                    ],
+                  ),
+                  trailing: IconButton(
+                    icon: const Icon(Icons.remove_shopping_cart),
+                    onPressed: () => removeFromCart(index),
+                  ),
+                );
+              },
+            ),
           ),
-
-          );
-        },
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(
+              'Total Price: R${totalPrice.toStringAsFixed(2)}',
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.pop(context, 'checkout'),

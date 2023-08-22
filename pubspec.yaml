@@ -67,6 +67,12 @@ flutter:
   
  
   assets:
+    - images/backgroundFlagsAMC.png
+    - images/Footpeg puks.png
+    - images/AMC FRONT axle sliders.png
+    - images/AMC rear bobbin axle sliders.png
+    - images/AMC rear axle sliders.png
+    - images/Front Bobbin Replacement.png
     - images/low_res_amc-removebg-preview.png
     - images/Gear Rack AMC (2).jpeg
     - images/Laptimer.png
@@ -90,6 +96,8 @@ flutter:
     - images/Laptimer Bracket Final.png
     - images/Apex Axle Sliders Final.png
     - images/AboutImageAMC.jpg
+    - images/FITMENT LIST.png
+    - images/BackgroundShop.jpg
   fonts:
     - family: SamsungSharpSans
       fonts:

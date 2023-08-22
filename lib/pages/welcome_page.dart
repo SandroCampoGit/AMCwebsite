@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/aboutus_page.dart';
 import 'package:flutter_application_1/pages/accounts_page.dart';
+import 'package:flutter_application_1/pages/fitmentsheet_page.dart';
 import 'package:flutter_application_1/pages/login_page.dart';
 import 'package:flutter_application_1/pages/shop_page.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -130,14 +131,14 @@ final String emailUrl="https://www.google.com/gmail";
   ];
 
   @override
-  Widget build(BuildContext context) {
+   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
         title: const Text(
           'Welcome',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold),
         ),
       ),
       drawer: Drawer(
@@ -188,7 +189,7 @@ final String emailUrl="https://www.google.com/gmail";
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const AccountsPage(),
+                    builder: (context) => const FitmentSheetPage(),
                   ),
                 );
               },
@@ -203,7 +204,7 @@ final String emailUrl="https://www.google.com/gmail";
            // fit: BoxFit.cover,
          // ),
         ),
-        child: ListView(
+       child: ListView(
           padding: const EdgeInsets.all(16),
           children: <Widget>[
             Row(
@@ -295,6 +296,12 @@ final String emailUrl="https://www.google.com/gmail";
             ),
             const SizedBox(height: 20),
             ElevatedButton(
+               style: ElevatedButton.styleFrom(
+    backgroundColor: Colors.blueGrey, // background color, was "primary"
+    foregroundColor: Colors.white, // text color, was "onPrimary"
+    padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 40),
+    textStyle: const TextStyle(fontSize: 20),
+  ),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -389,7 +396,7 @@ final String emailUrl="https://www.google.com/gmail";
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         const Text(
-                          'Does it fit your bike?',
+                          'Contact Us',
                           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(height: 10),
